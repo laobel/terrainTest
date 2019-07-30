@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://localhost:8070/Build/CesiumUnminified/Cesium.js"></script>
+    <style>
+        @import url(http://localhost:8070/Source/Widgets/widgets.css);
+
+        html,body,#cesiumContainer{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<div id="cesiumContainer" class="fullSize"></div>
+<div id="loadingOverlay"><h1>Loading...</h1></div>
+<div id="toolbar">
+    <div id="terrainMenu"></div>
+    <div id="zoomButtons"></div>
+    <div id="toggleLighting"></div>
+    <div id="sampleButtons"></div>
+</div>
+</body>
+<script>
+    var tdtImg_all=new Cesium.WebMapTileServiceImageryProvider({
+        url: "http://localhost:8080/dist/tdtImg_all/{TileMatrix}/{TileCol}/{TileRow}.jpg",
+        layer: "tdtImgTiles",
+        style: "default",
+        format: "image/jpeg",
+        tileMatrixSetID: "GoogleMapsCompatible",
+        minimumLevel:0,
+        maximumLevel: 6,
+        show: true
+    });
+    var cesiumTerrainProviderMeshes = new Cesium.CesiumTerrainProvider({
+        url : 'http://localhost:8080/dist/terrain',
+        requestWaterMask : true,
+        requestVertexNormals : true
+    });
+    var viewer = new Cesium.Viewer('cesiumContainer',{
+        baseLayerPicker : false,
+        imageryProvider:tdtImg_all,
+        terrainProvider:cesiumTerrainProviderMeshes
+    });
+</script>
+</html>

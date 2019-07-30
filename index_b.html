@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Quantized mesh tile viewer &mdash; quantized-mesh-tile 0.4</title>
+
+
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css"/>
+
+
+    <link rel="index" title="Index"
+          href="genindex.html"/>
+    <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="quantized-mesh-tile 0.4" href="index.html"/>
+    <link rel="prev" title="Global-Geodetic Profile" href="globalgeodetic.html"/>
+
+
+    <script src="_static/js/modernizr.min.js"></script>
+
+
+    <!-- RTD Extra Head -->
+
+    <!--
+    Always link to the latest version, as canonical.
+    http://docs.readthedocs.org/en/latest/canonical.html
+    -->
+    <link rel="canonical" href="http://quantized-mesh-tile.readthedocs.io/en/latest/viewer.html"/>
+
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css"/>
+
+    <script type="text/javascript" src="_static/readthedocs-data.js"></script>
+
+    <!-- Add page-specific data, which must exist in the page js, not global -->
+    <script type="text/javascript">
+        READTHEDOCS_DATA['page'] = 'viewer'
+        READTHEDOCS_DATA['source_suffix'] = '.rst'
+    </script>
+
+    <script type="text/javascript" src="_static/readthedocs-dynamic-include.js"></script>
+
+    <!-- end RTD <extrahead> --></head>
+
+<body class="wy-body-for-nav" role="document">
+
+
+<div class="wy-grid-for-nav">
+
+
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+        <div class="wy-side-scroll">
+            <div class="wy-side-nav-search">
+
+
+                <a href="index.html" class="icon icon-home"> quantized-mesh-tile
+
+
+                </a>
+
+
+                <div class="version">
+                    latest
+                </div>
+
+
+                <div role="search">
+                    <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+                        <input type="text" name="q" placeholder="Search docs"/>
+                        <input type="hidden" name="check_keywords" value="yes"/>
+                        <input type="hidden" name="area" value="default"/>
+                    </form>
+                </div>
+
+
+            </div>
+
+            <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+
+
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+                    <li class="toctree-l1"><a class="reference internal" href="encode.html">Encode and decode</a></li>
+                    <li class="toctree-l1"><a class="reference internal" href="terraintile.html">Terrain Tile</a></li>
+                    <li class="toctree-l1"><a class="reference internal" href="terraintopology.html">Terrain
+                        Topology</a></li>
+                    <li class="toctree-l1"><a class="reference internal" href="globalgeodetic.html">Global-Geodetic
+                        Profile</a></li>
+                    <li class="toctree-l1 current"><a class="current reference internal" href="#">Quantized mesh tile
+                        viewer</a></li>
+                </ul>
+
+
+            </div>
+        </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+
+        <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+
+            <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+            <a href="index.html">quantized-mesh-tile</a>
+
+        </nav>
+
+
+        <div class="wy-nav-content">
+            <div class="rst-content">
+
+
+                <div role="navigation" aria-label="breadcrumbs navigation">
+
+                    <ul class="wy-breadcrumbs">
+
+                        <li><a href="index.html">Docs</a> &raquo;</li>
+
+                        <li>Quantized mesh tile viewer</li>
+
+
+                        <li class="wy-breadcrumbs-aside">
+
+
+                            <a href="https://github.com/loicgasser/quantized-mesh-tile/blob/master/doc/source/viewer.rst"
+                               class="fa fa-github"> Edit on GitHub</a>
+
+
+                        </li>
+
+                    </ul>
+
+
+                    <hr/>
+                </div>
+                <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+                    <div itemprop="articleBody">
+
+                        <div class="section" id="quantized-mesh-tile-viewer">
+                            <span id="viewer"></span>
+                            <h1>Quantized mesh tile viewer<a class="headerlink" href="#quantized-mesh-tile-viewer"
+                                                             title="Permalink to this headline">¶</a></h1>
+                            <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+                            <script type="text/javascript"
+                                    src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r62/three.min.js"></script>
+                            <script type="text/javascript" src="_static/TrackballControls.js"></script>
+                            <script type="text/javascript" src="_static/TerrainLoader.js"></script>
+                            <script type="text/javascript"
+                                    src="https://cesiumjs.org/releases/1.21/Build/Cesium/Cesium.js"></script>
+                            <script type="text/javascript" src="_static/tileLoader.js"></script>
+                            <div id="webgl"></div>
+                        </div>
+
+
+                    </div>
+                    <div class="articleComments">
+
+                    </div>
+                </div>
+                <footer>
+
+                    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+
+
+                        <a href="globalgeodetic.html" class="btn btn-neutral" title="Global-Geodetic Profile"
+                           accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+
+                    </div>
+
+
+                    <hr/>
+
+                    <div role="contentinfo">
+                        <p>
+                            &copy; Copyright 2016, Loïc Gasser.
+
+                            <span class="commit">
+          Revision <code>a31f5c2d</code>.
+        </span>
+
+
+                        </p>
+                    </div>
+                    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a
+                        href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a
+                        href="https://readthedocs.org">Read the Docs</a>.
+
+                </footer>
+
+            </div>
+        </div>
+
+    </section>
+
+</div>
+
+
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Versions</dt>
+
+            <dd><a href="/en/latest/">latest</a></dd>
+
+            <dd><a href="/en/stable/">stable</a></dd>
+
+        </dl>
+        <dl>
+            <dt>Downloads</dt>
+
+            <dd><a href="//readthedocs.org/projects/quantized-mesh-tile/downloads/pdf/latest/">pdf</a></dd>
+
+            <dd><a href="//readthedocs.org/projects/quantized-mesh-tile/downloads/htmlzip/latest/">htmlzip</a></dd>
+
+            <dd><a href="//readthedocs.org/projects/quantized-mesh-tile/downloads/epub/latest/">epub</a></dd>
+
+        </dl>
+        <dl>
+            <dt>On Read the Docs</dt>
+            <dd>
+                <a href="//readthedocs.org/projects/quantized-mesh-tile/?fromdocs=quantized-mesh-tile">Project Home</a>
+            </dd>
+            <dd>
+                <a href="//readthedocs.org/builds/quantized-mesh-tile/?fromdocs=quantized-mesh-tile">Builds</a>
+            </dd>
+        </dl>
+        <hr/>
+        Free document hosting provided by <a href="http://www.readthedocs.org">Read the Docs</a>.
+
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    var DOCUMENTATION_OPTIONS = {
+        URL_ROOT: './',
+        VERSION: '0.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE: true,
+        SOURCELINK_SUFFIX: '.txt'
+    };
+</script>
+<script type="text/javascript" src="https://media.readthedocs.org/javascript/jquery/jquery-2.0.3.min.js"></script>
+<script type="text/javascript"
+        src="https://media.readthedocs.org/javascript/jquery/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="https://media.readthedocs.org/javascript/underscore.js"></script>
+<script type="text/javascript" src="https://media.readthedocs.org/javascript/doctools.js"></script>
+<script type="text/javascript"
+        src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/javascript" src="https://media.readthedocs.org/javascript/readthedocs-doc-embed.js"></script>
+
+
+<script type="text/javascript">
+    jQuery(function () {
+        SphinxRtdTheme.StickyNav.enable();
+    });
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html class="no-js lt-ie9" lang="en"> <![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Quantized mesh tile viewer &mdash; quantized-mesh-tile 0.4</title>
+
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .header {
+            height: 80px;
+            width: 100%;
+            background-color: #5495CD;
+            color: white;
+        }
+
+        .earth {
+            float: left;
+            height: calc(100% - 80px);
+            width: calc(100% - 500px);
+        }
+
+        .control {
+            height: calc(100% - 80px);
+            width: 440px;
+            display: inline-block;
+            padding: 30px;
+        }
+    </style>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r62/three.min.js"></script>
+    <script type="text/javascript" src="_static/TrackballControls.js"></script>
+    <script type="text/javascript" src="_static/TerrainLoader.js"></script>
+    <script type="text/javascript" src="https://cesiumjs.org/releases/1.21/Build/Cesium/Cesium.js"></script>
+    <script type="text/javascript" src="_static/tileLoader.js"></script>
+</head>
+<body>
+<div class="header">
+    <h1>Quantized mesh tile viewer</h1>
+</div>
+<div class="earth" id="webgl">
+
+</div>
+<div class="control">
+    <div>
+        <label>terrain地址：</label>
+        <input id="url" type="text" style="width: 330px;" value="http://182.247.253.75/stk-terrain/tiles/14/25720/10464.terrain?v=1.16389.0">
+    </div>
+    <div>
+        <input id="update" type="button" value="刷新" style="float: right;margin: 20px;">
+    </div>
+</div>
+
+</body>
+</html>
